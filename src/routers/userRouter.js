@@ -26,6 +26,22 @@ router.get('/users',async (req,res)=>{
     }
 })
 
+// GET a single user
+router.get('/users/:id',async (req,res)=>{
+    try{
+        const user = await User.findById(req.params.id);
+        
+        if(!user){
+            throw new Error('User Not Found')
+        }
+
+        res.send(user)
+    }catch(e){
+        res.status(404).send(e.message)
+    }
+})
+
+
 // UPDATE a user
 router.patch('/users/:id',async (req,res)=>{
     // determine which keys are being updated
@@ -53,7 +69,7 @@ router.delete('/users/:id', async (req,res)=>{
         if(!user){
             throw new Error('User doesn"t exist')
         }
-        
+
         await user.remove()
         res.send(user)
     }catch(e){
