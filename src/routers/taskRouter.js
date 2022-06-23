@@ -76,4 +76,18 @@ router.delete('/tasks/:id', async (req,res)=>{
     }
 })
 
+// DELETE all tasks
+router.delete('/tasks',async (req,res)=>{
+    try{
+      const tasks = await Task.find({});
+       if(tasks.length === 0){
+        return res.status(404).send("You currently do not have any tasks")
+       }
+        await Task.deleteMany();
+        res.send('All tasks have been removed')
+    }catch(e){
+        res.status(500).send(e.message)
+    }
+})
+
 module.exports= router;
