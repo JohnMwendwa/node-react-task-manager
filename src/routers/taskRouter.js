@@ -18,4 +18,18 @@ router.post('/tasks',async (req,res)=>{
     }
 })
 
+// GET all tasks
+router.get('/tasks',async (req,res)=>{
+    try{
+        const tasks = await Task.find({});
+        if(tasks.length === 0){
+         return res.send('You have not created any tasks yet')
+        }
+        res.send(tasks)
+    }catch(e){
+        res.status(500).send(e.message)
+    }
+})
+
+
 module.exports= router;
