@@ -55,7 +55,7 @@ router.patch('/tasks/:id', auth, async (req,res)=>{
     const updates = Object.keys(req.body);
     try{
       const task = await Task.findOne({_id:req.params.id,author:req.user._id});
-      
+
       if(!task){
         return res.status(404).send("Task doesn't exist!")
       }
@@ -68,14 +68,13 @@ router.patch('/tasks/:id', auth, async (req,res)=>{
 })
 
 // DELETE a single task
-router.delete('/tasks/:id', async (req,res)=>{
+router.delete('/tasks/:id', auth, async (req,res)=>{
     try{
-        const task = await Task.findById(req.params.id);
+        const task = await Task.findOneAndDelete({_id:req.params.id,author:req.user._id});
 
         if(!task){
             return res.status(404).send("Task doesn't exist!")
         }
-        await task.remove();
 
         res.send('Task Deleted successfully')
     }catch(e){
