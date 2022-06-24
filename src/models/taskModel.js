@@ -9,6 +9,10 @@ const taskSchema = new mongoose.Schema({
     completed:{
         type:Boolean,
         default:false
+    },
+    author:{
+        type:Schema.Types.ObjectId,
+        required:true
     }
 });
 
