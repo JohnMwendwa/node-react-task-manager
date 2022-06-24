@@ -51,10 +51,11 @@ router.get('/tasks/:id',auth,async (req,res)=>{
 })
 
 // UPDATE a task
-router.patch('/tasks/:id', async (req,res)=>{
+router.patch('/tasks/:id', auth, async (req,res)=>{
     const updates = Object.keys(req.body);
     try{
-      const task = await Task.findById(req.params.id);
+      const task = await Task.findOne({_id:req.params.id,author:req.user._id});
+      
       if(!task){
         return res.status(404).send("Task doesn't exist!")
       }
