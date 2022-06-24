@@ -58,21 +58,6 @@ router.get('/users/me',auth,async (req,res)=>{
    res.send(req.user)
 })
 
-// GET a single user
-router.get('/users/:id',async (req,res)=>{
-    try{
-        const user = await User.findById(req.params.id);
-        
-        if(!user){
-            throw new Error('User Not Found')
-        }
-
-        res.send(user)
-    }catch(e){
-        res.status(404).send(e.message)
-    }
-})
-
 
 // UPDATE a user
 router.patch('/users/:id',async (req,res)=>{
