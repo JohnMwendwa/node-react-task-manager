@@ -34,6 +34,18 @@ const userSchema= new mongoose.Schema({
     }]
 })
 
+// Hide sensitive data
+userSchema.methods.toJSON = function (){
+    const user = this;
+    const userObject = user.toObject();
+
+    delete userObject.password;
+    delete userObject.tokens;
+     
+    return userObject
+}
+
+
 // function to generate authentication tokens
 userSchema.methods.generateAuthToken = async function (){
     const user = this;
