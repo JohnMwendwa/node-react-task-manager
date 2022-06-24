@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const validator = require('validator')
+const bcrypt = require('bcrypt')
 
 const userSchema= new mongoose.Schema({
     name:{
@@ -23,6 +24,8 @@ const userSchema= new mongoose.Schema({
         minlength:7,
     }
 })
+
+
 
 const User = mongoose.model('User',userSchema);
 
