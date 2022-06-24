@@ -23,9 +23,9 @@ router.post('/tasks',auth,async (req,res)=>{
 })
 
 // GET all tasks
-router.get('/tasks',async (req,res)=>{
+router.get('/tasks', auth, async (req,res)=>{
     try{
-        const tasks = await Task.find({});
+        const tasks = await Task.find({author:req.user._id});
         if(tasks.length === 0){
          return res.send('You have not created any tasks yet')
         }
