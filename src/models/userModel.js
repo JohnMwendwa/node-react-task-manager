@@ -19,13 +19,13 @@ const userSchema= new mongoose.Schema({
         }
     },
     password:{
-        type:Number,
+        type:String,
         required:true,
         minlength:7,
     }
 })
 
-userSchema.pre('save', async function(next){
+userSchema.pre('save', async function (next){
     const user = this;
     // Hash password only when creating or updating it
     if(user.isModified('password')){
