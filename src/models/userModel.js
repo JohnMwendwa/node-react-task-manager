@@ -34,6 +34,14 @@ const userSchema= new mongoose.Schema({
     }]
 })
 
+// Create a vitual field for storing tasks
+userSchema.virtual('tasks',{
+    ref:'Task',
+    localField:'_id',
+    foreignField:'author'
+})
+
+
 // Hide sensitive data
 userSchema.methods.toJSON = function (){
     const user = this;
