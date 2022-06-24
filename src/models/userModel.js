@@ -24,7 +24,13 @@ const userSchema= new mongoose.Schema({
         type:String,
         required:true,
         minlength:7,
-    }
+    },
+    tokens:[{
+        token:{
+            type:String,
+            required:true
+        }
+    }]
 })
 
 // Custom function to log in users
@@ -40,7 +46,7 @@ userSchema.statics.findByCredentials = async (email,password)=>{
    if(!isMatch){
     throw new Error("Wrong password")
    }
-   
+
    return user
 }
 
