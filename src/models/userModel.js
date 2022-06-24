@@ -25,7 +25,15 @@ const userSchema= new mongoose.Schema({
     }
 })
 
-
+userSchema.pre('save', async function(next){
+    const user = this;
+    // Hash password only when creating or updating it
+    if(user.isModified('password')){
+        user.password = await bcrypt.hash(user.password,8)
+    }
+    // call the next middleware after hashing is complete
+    next()
+})
 
 const User = mongoose.model('User',userSchema);
 
