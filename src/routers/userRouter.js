@@ -60,18 +60,14 @@ router.get('/users/me',auth,async (req,res)=>{
 
 
 // UPDATE a user
-router.patch('/users/:id',async (req,res)=>{
+router.patch('/users/me',auth,async (req,res)=>{
     // determine which keys are being updated
     const updates = Object.keys(req.body)
     try{
-        const user = await User.findById(req.params.id)
-        if(!user){
-           throw new Error("User doesn't exist")
-        }
-        updates.forEach(update=>(user[update] = req.body[update]))
-        await user.save();
-        res.send(user)
-        
+      updates.forEach(update=>(req.user[update] = req.body[update]))
+      await req.user.save();
+
+      res.send(req.user)      
     }catch(e){
         res.status(400).send(e.message)
     }
