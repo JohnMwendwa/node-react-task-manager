@@ -1,13 +1,17 @@
 const express = require('express');
+const auth = require('../middleware/authToken');
 const Task = require('../models/taskModel');
 const router = new express.Router();
 
 //ROUTES
 
 // CREATE a task
-router.post('/tasks',async (req,res)=>{
+router.post('/tasks',auth,async (req,res)=>{
     try{
-      const task = new Task(req.body)
+      const task = new Task({
+        ...req.body,
+        author:req.user._id
+      })
       if(!task){
         throw new Error("You cannot create an empty task")
       }
