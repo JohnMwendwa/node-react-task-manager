@@ -27,6 +27,24 @@ const userSchema= new mongoose.Schema({
     }
 })
 
+// Custom function to log in users
+userSchema.statics.findByCredentials = async (email,password)=>{
+   const user = await User.findOne({email});
+   if(!User){
+    throw new Error("User doesn't exist!")
+   }
+
+// Check if stored password and the one provided match
+   const isMatch = await bcrypt.compare(password,user.password);
+
+   if(!isMatch){
+    throw new Error("Wrong password")
+   }
+   
+   return user
+}
+
+
 userSchema.pre('save', async function (next){
     const user = this;
     // Hash password only when creating or updating it
