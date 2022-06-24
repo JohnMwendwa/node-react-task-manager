@@ -16,6 +16,19 @@ router.post('/users',async (req,res)=>{
     }
 })
 
+// LOGIN a user
+router.post('/users/login',async (req,res)=>{
+    const email = req.body.email.toLowerCase();
+    const password =req.body.password;
+    try{
+        const user = await User.findByCredentials(email,password);
+        
+        res.send(user) 
+    }catch(e){
+        res.send(e.message)
+    }
+})
+
 // GET all users
 router.get('/users',async (req,res)=>{
     try{
