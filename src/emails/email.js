@@ -14,3 +14,6 @@ const sendWelcomEmail = (email,name)=>{
     })
    }
    
+   module.exports = {
+    sendWelcomEmail
+}
