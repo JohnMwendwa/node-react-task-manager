@@ -67,8 +67,8 @@ userSchema.methods.generateAuthToken = async function (){
 // Custom function to log in users
 userSchema.statics.findByCredentials = async (email,password)=>{
    const user = await User.findOne({email});
-   if(!User){
-    throw new Error("User doesn't exist!")
+   if(!user){
+    throw new Error("Invalid credentials!")
    }
 
 // Check if stored password and the one provided match
