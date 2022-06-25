@@ -33,6 +33,8 @@ const userSchema= new mongoose.Schema({
             required:true
         }
     }]
+},{
+    timestamps:true
 })
 
 // Create a vitual field for storing tasks
