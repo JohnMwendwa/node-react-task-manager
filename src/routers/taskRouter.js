@@ -83,9 +83,9 @@ router.delete('/tasks/:id', auth, async (req,res)=>{
 })
 
 // DELETE all tasks
-router.delete('/tasks',async (req,res)=>{
+router.delete('/tasks', auth, async (req,res)=>{
     try{
-      const tasks = await Task.find({});
+      const tasks = await Task.find({author:req.user._id});
        if(tasks.length === 0){
         return res.status(404).send("You currently do not have any tasks")
        }
