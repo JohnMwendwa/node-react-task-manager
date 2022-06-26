@@ -2,9 +2,18 @@ const express = require('express');
 const User = require('../models/userModel')
 const auth = require('../middleware/authToken');
 const {sendWelcomeEmail,sendCancellationEmail} = require('../emails/email');
+const router = new express.Router();
 const multer = require('multer');
 
-const router = new express.Router();
+// Setup how Images will be uploaded
+const upload = multer({
+    // limit image files to 1MB size
+    limits:{
+        fileSize:1000000
+    }
+})
+
+
 
 // ROUTES
 
