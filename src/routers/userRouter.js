@@ -105,7 +105,7 @@ router.delete('/users/me',auth, async (req,res)=>{
 })
 
 // UPLOAD a profile pic
-router.post('/users/me/avatar',upload.single('avatar'),(req,res)=>{
+router.post('/users/me/avatar', auth, upload.single('avatar'),(req,res)=>{
  res.send()
 },(error,req,res,next)=>{
     res.status(400).send(error.message)
