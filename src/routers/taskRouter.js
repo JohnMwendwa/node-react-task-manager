@@ -31,7 +31,11 @@ router.get('/tasks', auth, async (req,res)=>{
     }
 console.log(req.query.limit)
     try{
-        const tasks = await Task.find({author:req.user._id,...match});
+        const tasks = await Task.find({author:req.user._id,...match},null,{
+            limit:parseInt(req.query.limit),
+            skip:parseInt(req.query.skip)
+        });
+
         if(tasks.length === 0){
          return res.send('You have not created any tasks yet')
         }
