@@ -113,6 +113,16 @@ router.post('/users/me/avatar', auth, upload.single('avatar'),async (req,res)=>{
     res.status(400).send(error.message)
 })
 
+// REMOVE profile pic
+router.delete('/users/me/avatar',auth, async (req,res)=>{
+    try{
+      req.user.avatar = undefined;
+      await req.user.save();
+      res.send()
+    }catch(e){
+        res.status(500).send(e.message)
+    }
+})
 
 
 module.exports = router;
