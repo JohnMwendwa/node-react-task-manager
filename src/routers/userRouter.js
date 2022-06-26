@@ -1,9 +1,10 @@
 const express = require('express');
-const User = require('../models/userModel')
+const User = require('../models/userModel');
 const auth = require('../middleware/authToken');
 const {sendWelcomeEmail,sendCancellationEmail} = require('../emails/email');
 const router = new express.Router();
 const multer = require('multer');
+const sharp = require('sharp');
 
 // Setup how Images will be uploaded
 const upload = multer({
@@ -106,7 +107,11 @@ router.delete('/users/me',auth, async (req,res)=>{
 
 // UPLOAD a profile pic
 router.post('/users/me/avatar', auth, upload.single('avatar'),async (req,res)=>{
-    req.user.avatar = req.file.buffer;
+    const buffer = await sharp(req.file.buffer)
+                    .resize({width:250,height:250})
+                    .png()
+                    .toBuffer()
+    req.user.avatar = buffer;
     await req.user.save()
     res.send()
 },(error,req,res,next)=>{
