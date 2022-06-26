@@ -24,8 +24,14 @@ router.post('/tasks',auth,async (req,res)=>{
 
 // GET all tasks
 router.get('/tasks', auth, async (req,res)=>{
+    // ?completed=true
+    const match = {};
+    if(req.query.completed){
+        match.completed = req.query.completed === 'true'
+    }
+console.log(req.query.limit)
     try{
-        const tasks = await Task.find({author:req.user._id});
+        const tasks = await Task.find({author:req.user._id,...match});
         if(tasks.length === 0){
          return res.send('You have not created any tasks yet')
         }
