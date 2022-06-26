@@ -103,4 +103,14 @@ router.delete('/users/me',auth, async (req,res)=>{
         res.status(404).send(e.message)
     }
 })
+
+// UPLOAD a profile pic
+router.post('/users/me/avatar',upload.single('avatar'),(req,res)=>{
+ res.send()
+},(error,req,res,next)=>{
+    res.status(400).send(error.message)
+})
+
+
+
 module.exports = router;
