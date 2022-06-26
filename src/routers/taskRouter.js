@@ -26,14 +26,23 @@ router.post('/tasks',auth,async (req,res)=>{
 router.get('/tasks', auth, async (req,res)=>{
     // ?completed=true
     const match = {};
+    const sort = {}
+
     if(req.query.completed){
         match.completed = req.query.completed === 'true'
     }
-console.log(req.query.limit)
+    
+    // ?sortBy=createdAt_desc  || ?sortBy=createdAt_asc
+    if(req.query.sortBy){
+        const parts = req.query.sortBy.split('_');
+        sort[parts[0]] = parts[1] === 'desc' ? -1 : 1;
+    }
+
     try{
         const tasks = await Task.find({author:req.user._id,...match},null,{
             limit:parseInt(req.query.limit),
-            skip:parseInt(req.query.skip)
+            skip:parseInt(req.query.skip),
+            sort
         });
 
         if(tasks.length === 0){
