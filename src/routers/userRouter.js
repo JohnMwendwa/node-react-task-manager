@@ -2,6 +2,8 @@ const express = require('express');
 const User = require('../models/userModel')
 const auth = require('../middleware/authToken');
 const {sendWelcomeEmail,sendCancellationEmail} = require('../emails/email');
+const multer = require('multer');
+
 const router = new express.Router();
 
 // ROUTES
