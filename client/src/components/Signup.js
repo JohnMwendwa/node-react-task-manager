@@ -18,7 +18,11 @@ function Signup() {
         })
           .then(res => res.json())
           .then(data =>
-            localStorage.setItem('token',`Bearer ${data.token}`))
+            localStorage.setItem('token',`Bearer ${data.token}`));
+
+        setName('');
+        setPassword('');
+        setEmail('');
       }
     
     return (
