@@ -28,11 +28,11 @@ const upload = multer({
 router.post('/users',async (req,res)=>{
     try{
      const user = new User(req.body)
-     await user.save();
+    await user.save();
     //  sendWelcomeEmail(user.email,user.name)
-     await user.generateAuthToken();
+    const token =  await user.generateAuthToken();
      
-     res.status(201).send(user)
+     res.status(201).send({user,token})
     }catch(e){
         res.status(400).send(e.message)
     }
