@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import Navbar from './Navbar';
 
 function Login() {
     const [password, setPassword] = useState('');
@@ -23,8 +24,10 @@ function Login() {
       }
     
     return (
-      <form onSubmit={handleSubmit}>
-    
+      <div>
+        <Navbar />
+
+        <form onSubmit={handleSubmit}>
         <input
           type="email"
           name="email"
@@ -43,6 +46,7 @@ function Login() {
   
         <button>Login</button>
       </form>
+      </div>
     )
 }
 
