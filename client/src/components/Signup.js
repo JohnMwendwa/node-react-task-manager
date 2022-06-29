@@ -1,10 +1,12 @@
 import React,{useState} from 'react'
+import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 
 function Signup() {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [email,setEmail] =useState('');
+    let navigate = useNavigate();
 
 
     const handleSubmit = async (e) => {
@@ -24,6 +26,7 @@ function Signup() {
         setName('');
         setPassword('');
         setEmail('');
+        navigate('/dashboard',{replace:true})
       }
     
     return (
