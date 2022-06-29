@@ -1,6 +1,5 @@
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom';
-import Navbar from './Navbar';
 import './css/Signup.css'
 
 function Signup() {
@@ -32,8 +31,6 @@ function Signup() {
     
     return (
      <div>
-      <Navbar />
-
       <div className="Signup__wrapper">
         <h2>Sign Up</h2>
        <form onSubmit={handleSubmit} className='Signup__form'>
