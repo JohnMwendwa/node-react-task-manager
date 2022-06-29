@@ -35,6 +35,7 @@ function Signup() {
       <Navbar />
 
       <div className="Signup__wrapper">
+        <h2>Sign Up</h2>
        <form onSubmit={handleSubmit} className='Signup__form'>
         <input
           type="text"
@@ -63,7 +64,7 @@ function Signup() {
           className='Signup__password'
         />
   
-        <button className='Signup__button'>Signup</button>
+        <button className='Signup__button'>Create Account</button>
       </form>
       </div>
      </div>
