@@ -1,6 +1,5 @@
 import React,{useState} from 'react'
-import { useNavigate } from 'react-router-dom';
-import Navbar from './Navbar';
+import { useNavigate,Link } from 'react-router-dom';
 import './css/Login.css'
 
 function Login() {
@@ -29,7 +28,6 @@ function Login() {
     
     return (
       <div>
-        <Navbar />
       <div className="Login__wrap">
         <h2>Login</h2>
           <form onSubmit={handleSubmit} className='Login__form'>
