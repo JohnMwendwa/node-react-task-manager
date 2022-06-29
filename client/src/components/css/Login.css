@@ -2,6 +2,7 @@ body{
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: 'Helvetica Neue', Arial, Sans-Serif;
 }
 .Login__wrap{
     position: relative;
@@ -11,4 +12,11 @@ body{
     border-radius: 5px;
     box-shadow: 3px 3px 10px #333;
     padding: 15px;
+}
+.Login__wrap h2{
+    text-align: center;
+    font-weight: 200;
+    font-size: 2em;
+    margin-top: 10px;
+    color: #34495e;
 }
