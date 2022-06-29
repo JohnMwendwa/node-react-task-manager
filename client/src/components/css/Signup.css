@@ -1,0 +1,49 @@
+
+.Signup__wrapper{
+    position: relative;
+    margin: 20px auto;
+    background: #ecf0f1;
+    width: 350px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px #333;
+    padding: 15px;
+}
+.Signup__wrapper h2{
+    text-align: center;
+    font-weight: 200;
+    font-size: 2em;
+    margin-top: 10px;
+    color: #34495e;
+}
+.Signup__form{
+    padding-top: 20px;
+}
+.Signup__username,.Signup__email,.Signup__password,.Signup__button{
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 25px;
+    height: 40px;
+    border-radius: 5px;
+    outline: none;
+  
+}
+.Signup__username,.Signup__email,.Signup__password{
+    border: 1px solid #bbb;
+    padding: 0 0 0 10px;
+    font-size: 14px;
+}
+.Signup__username:focus,.Signup__email:focus,.Signup__password:focus{
+    border: 1px solid #3498db;
+}
+.Signup__button{
+    background: #e74c3c;
+    border:none;
+    color: white;
+    font-size: 18px;
+    font-weight: 200;
+    cursor: pointer;
+    transition: box-shadow .4s ease;
+}
+.Signup__button:hover,.Signup__button:active{
+    box-shadow: 1px 1px 5px #555;
+}
