@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
+import Logout from "./Logout";
 
 function Dashboard() {
     const [tasks,setTasks] = useState([]);
@@ -40,6 +41,7 @@ function Dashboard() {
     <nav>
         <div> {username}</div>
         <div> {email}</div>
+        <Logout />
     </nav>
     <h1>Tasks</h1>
     {tasks.map(task=><li key={task._id}>{task.description}</li>)}
