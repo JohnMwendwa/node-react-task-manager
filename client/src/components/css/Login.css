@@ -1,0 +1,14 @@
+body{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.Login__wrap{
+    position: relative;
+    margin: 20px auto;
+    background: #ecf0f1;
+    width: 350px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px #333;
+    padding: 15px;
+}
