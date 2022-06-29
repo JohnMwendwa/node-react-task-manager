@@ -1,9 +1,11 @@
 import React,{useState} from 'react'
+import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 
 function Login() {
     const [password, setPassword] = useState('');
     const [email,setEmail] =useState('');
+    let navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -21,6 +23,7 @@ function Login() {
 
         setPassword('');
         setEmail('');
+        navigate('/dashboard',{replace:true})
       }
     
     return (
