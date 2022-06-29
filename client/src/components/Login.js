@@ -30,28 +30,30 @@ function Login() {
     return (
       <div>
         <Navbar />
+      <div className="Login__wrap">
+        <h2>Login</h2>
+          <form onSubmit={handleSubmit} className='Login__form'>
+              <input
+                type="email"
+                name="email"
+                value={email}
+                onChange={e => setEmail(e.target.value )}
+                placeholder='Email'
+                className='Login__email'
+              />
 
-        <form onSubmit={handleSubmit} className='Login__form'>
-        <input
-          type="email"
-          name="email"
-          value={email}
-          onChange={e => setEmail(e.target.value )}
-          placeholder='Email'
-          className='Login__email'
-        />
-
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={e => setPassword( e.target.value )}
-          placeholder='Password'
-          className='Login__password'
-        />
-  
-        <button className='Login__button'>Login</button>
-      </form>
+              <input
+                type="password"
+                name="password"
+                value={password}
+                onChange={e => setPassword( e.target.value )}
+                placeholder='Password'
+                className='Login__password'
+              />
+        
+              <button className='Login__button'>Sign In </button>
+          </form>
+      </div>
       </div>
     )
 }
