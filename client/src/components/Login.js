@@ -51,6 +51,9 @@ function Login() {
         
               <button className='Login__button'>Sign In </button>
           </form>
+          <Link to='/'>
+        <p>Don't have an account? Sign up</p>
+        </Link>
       </div>
       </div>
     )
