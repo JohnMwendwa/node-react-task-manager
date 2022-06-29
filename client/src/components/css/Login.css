@@ -20,3 +20,35 @@ body{
     margin-top: 10px;
     color: #34495e;
 }
+.Login__form{
+    padding-top: 20px;
+}
+.Login__email,.Login__password,.Login__button{
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 25px;
+    height: 40px;
+    border-radius: 5px;
+    outline: none;
+  
+}
+.Login__email,.Login__password{
+    border: 1px solid #bbb;
+    padding: 0 0 0 10px;
+    font-size: 14px;
+}
+.Login__email:focus,.Login__password:focus{
+    border: 1px solid #3498db;
+}
+.Login__button{
+    background: #e74c3c;
+    border:none;
+    color: white;
+    font-size: 18px;
+    font-weight: 200;
+    cursor: pointer;
+    transition: box-shadow .4s ease;
+}
+.Login__button:hover,.Login__button:active{
+    box-shadow: 1px 1px 5px #555;
+}
