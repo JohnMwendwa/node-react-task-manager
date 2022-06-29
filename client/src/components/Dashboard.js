@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Logout from "./Logout";
+import'./css/Dashboard.css'
 
 function Dashboard() {
     const [tasks,setTasks] = useState([]);
