@@ -15,6 +15,16 @@
     margin-top: 10px;
     color: #34495e;
 }
+.Signup__link{
+    text-align: center;
+    color: #34495e;
+    text-decoration: none;
+}
+.Signup__link a{
+    text-decoration: none;
+    font-weight: 600;
+    padding-left: 3px;
+}
 .Signup__form{
     padding-top: 20px;
 }

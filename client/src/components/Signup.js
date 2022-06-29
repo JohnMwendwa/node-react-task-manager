@@ -63,9 +63,13 @@ function Signup() {
   
         <button className='Signup__button'>Create Account</button>
       </form>
-      <Link to='/login'>
-        <p>Already have an account? Login</p>
-        </Link>
+      <div className="Signup__link">
+        <p>Already have an account? 
+          <Link to='/login'>
+             Login
+          </Link>
+        </p>
+      </div>
       </div>
      </div>
     )
