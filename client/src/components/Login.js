@@ -31,13 +31,14 @@ function Login() {
       <div>
         <Navbar />
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='Login__form'>
         <input
           type="email"
           name="email"
           value={email}
           onChange={e => setEmail(e.target.value )}
           placeholder='Email'
+          className='Login__email'
         />
 
         <input
@@ -46,9 +47,10 @@ function Login() {
           value={password}
           onChange={e => setPassword( e.target.value )}
           placeholder='Password'
+          className='Login__password'
         />
   
-        <button>Login</button>
+        <button className='Login__button'>Login</button>
       </form>
       </div>
     )
