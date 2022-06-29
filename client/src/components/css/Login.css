@@ -20,6 +20,16 @@ body{
     margin-top: 10px;
     color: #34495e;
 }
+.Login__link{
+    text-align: center;
+    color: #34495e;
+    text-decoration: none;
+}
+.Login__link a{
+    text-decoration: none;
+    font-weight: 600;
+    padding-left: 3px;
+}
 .Login__form{
     padding-top: 20px;
 }
