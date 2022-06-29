@@ -37,14 +37,19 @@ function Dashboard() {
     },[token])
 
   return (
-    <div>
-    <nav>
-        <div> {username}</div>
-        <div> {email}</div>
+    <div className="Dashboard">
+    <nav className="Dashboard__nav">
+        <div className="Dashboard__username"> {username}</div>
+        <div className="Dashboard__email"> {email}</div>
         <Logout />
     </nav>
-    <h1>Tasks</h1>
-    {tasks.map(task=><li key={task._id}>{task.description}</li>)}
+    <h1 className="Dashboard__title">Tasks</h1>
+    <ul className="Dashboard__lists">
+    {tasks.map(task=>
+    <li key={task._id} className='Dashboard__list'>
+      {task.description}
+      </li>)}
+      </ul>
     </div>
   )
 }
