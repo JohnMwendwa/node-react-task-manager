@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
+import './css/Signup.css'
 
 function Signup() {
     const [name, setName] = useState('');
@@ -33,13 +34,15 @@ function Signup() {
      <div>
       <Navbar />
 
-       <form onSubmit={handleSubmit}>
+      <div className="Signup__wrapper">
+       <form onSubmit={handleSubmit} className='Signup__form'>
         <input
           type="text"
           name="username"
           value={name}
           onChange={e => setName(e.target.value )}
           placeholder='Username'
+          className='Signup__username'
         />
    
         <input
@@ -48,6 +51,7 @@ function Signup() {
           value={email}
           onChange={e => setEmail(e.target.value )}
           placeholder='Email'
+          className='Signup__email'
         />
 
         <input
@@ -56,10 +60,12 @@ function Signup() {
           value={password}
           onChange={e => setPassword( e.target.value )}
           placeholder='Password'
+          className='Signup__password'
         />
   
-        <button>Signup</button>
+        <button className='Signup__button'>Signup</button>
       </form>
+      </div>
      </div>
     )
 }
