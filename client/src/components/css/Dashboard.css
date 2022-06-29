@@ -1,0 +1,23 @@
+.Dashboard{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.Dashboard__nav{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px;
+}
+.Dashboard__username,.Dashboard__email,.Dashboard button{
+    margin-top: 3px;
+}
+.Dashboard__title{
+    text-align: center;
+}
+.Dashboard__list{
+    list-style: none;
+}
