@@ -29,8 +29,14 @@ function Signup() {
         
           if(data.error.message){
             setError(data.error.message)
+            setTimeout(() => {
+              setError(null)
+            }, 5000);
           }else if(data.error.index === 0){
             setError('Email already exists!')
+            setTimeout(() => {
+              setError(null)
+            }, 5000);
           }else{
             localStorage.setItem('token',`Bearer ${data.token}`);
             setError(null);
