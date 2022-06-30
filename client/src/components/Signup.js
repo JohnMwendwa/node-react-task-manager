@@ -47,7 +47,12 @@ function Signup() {
           }
           
         })
-        .catch(err=>setError('Network Error!'))
+        .catch(err=>{
+          setError('Network Error!');
+          setTimeout(() => {
+            setError(null)
+          }, 5000);
+        })
        
       }
     
