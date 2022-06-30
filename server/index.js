@@ -1,6 +1,7 @@
 // Connect to database
 require('./db/mongoose')
 
+const path = require('path');
 const express = require('express');
 const userRouter = require('./routers/userRouter')
 const taskRouter = require('./routers/taskRouter')
@@ -9,7 +10,13 @@ const taskRouter = require('./routers/taskRouter')
 const app = express();
 
 // Environment port
-const port =process.env.PORT || 3000
+const port =process.env.PORT 
+
+// set path to react build folder
+const reactAssets = path.join(__dirname,'../client/build');
+
+//set express server to serve react static assets
+app.use(express.static(reactAssets));
 
 app.use(express.json())
 app.use(userRouter)
