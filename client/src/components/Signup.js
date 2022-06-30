@@ -26,7 +26,7 @@ function Signup() {
         e.preventDefault()
        createUser()
         .then(data=>{
-          console.log(data)
+        
           if(data.error.message){
             setError(data.error.message)
           }else if(data.error.index === 0){
@@ -49,6 +49,9 @@ function Signup() {
      <div>
       <div className="Signup__wrapper">
         <h2>Sign Up</h2>
+
+        {error && <p className='Signup__error'>{error}</p>}
+
        <form onSubmit={handleSubmit} className='Signup__form'>
         <input
           type="text"
