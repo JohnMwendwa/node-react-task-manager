@@ -65,6 +65,17 @@ body{
     box-shadow: 1px 1px 5px #555;
 }
 
+.Login__error{
+    padding: 5px;
+    text-align: center;
+    border: 1px solid red;
+    border-radius: 5px;
+    color: red;
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: -10px;
+}
+
 @media screen and (min-width:720px){
     .Login__wrap{
         width:50%;
