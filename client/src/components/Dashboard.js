@@ -10,7 +10,7 @@ function Dashboard() {
 
     useEffect(()=>{
         const getUser = async ()=>{
-            await fetch('http://localhost:3000/users/me',{
+            await fetch('/users/me',{
                method:'GET',
                headers:{
                'Authorization':token
@@ -23,7 +23,7 @@ function Dashboard() {
        }
    
        const getTasks = async ()=>{
-            await fetch('http://localhost:3000/tasks',{
+            await fetch('/tasks',{
                method:'GET',
                headers:{
                'Authorization':token
