@@ -7,23 +7,37 @@ function Login() {
     const [email,setEmail] =useState('');
     let navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        await fetch('/users/login', {
-          method: 'POST',
-          body: JSON.stringify({email,password}),
-          headers: { 
-              'Content-Type': 'application/json',
-              'mode':'cors'
-          },
-        })
-          .then(res => res.json())
-          .then(data =>
-            localStorage.setItem('token',`Bearer ${data.token}`));
+   const fetchUser = async ()=>{
+    const response =  await fetch('/users/login', {
+      method: 'POST',
+      body: JSON.stringify({email,password}),
+      headers: { 
+          'Content-Type': 'application/json',
+          'mode':'cors'
+      }
+    });
+    return response.json();
+   }
 
-        setPassword('');
-        setEmail('');
-        navigate('/dashboard',{replace:true})
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+       fetchUser()
+          .then(data =>{
+            if(data.error){
+              console.log(data.error);
+            }else{
+
+              localStorage.setItem('token',`Bearer ${data.token}`);
+
+              setPassword('');
+              setEmail('');
+              navigate('/dashboard',{replace:true})
+            }
+           
+          })
+           .catch(err=>console.log(err))
       }
     
     return (
@@ -36,6 +50,7 @@ function Login() {
                 name="email"
                 value={email}
                 onChange={e => setEmail(e.target.value )}
+                required
                 placeholder='Email'
                 className='Login__email'
               />
@@ -45,6 +60,7 @@ function Login() {
                 name="password"
                 value={password}
                 onChange={e => setPassword( e.target.value )}
+                required
                 placeholder='Password'
                 className='Login__password'
               />
