@@ -11,7 +11,7 @@ function Signup() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        await fetch('http://localhost:3000/users', {
+        await fetch('/users', {
           method: 'POST',
           body: JSON.stringify({email,password,name}),
           headers: { 
