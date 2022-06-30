@@ -6,27 +6,43 @@ function Signup() {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [email,setEmail] =useState('');
+    const [error,setError] =useState(null);
     let navigate = useNavigate();
 
+    const createUser = async ()=>{
+     const response = await fetch('/users', {
+        method: 'POST',
+        body: JSON.stringify({email,password,name}),
+        headers: { 
+            'Content-Type': 'application/json',
+            'mode':'cors'
+        }
+      });
+      return await response.json();
+      
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        await fetch('/users', {
-          method: 'POST',
-          body: JSON.stringify({email,password,name}),
-          headers: { 
-              'Content-Type': 'application/json',
-              'mode':'cors'
-          },
+       createUser()
+        .then(data=>{
+          console.log(data)
+          if(data.error.message){
+            setError(data.error.message)
+          }else if(data.error.index === 0){
+            setError('Email already exists!')
+          }else{
+            localStorage.setItem('token',`Bearer ${data.token}`);
+            setError(null);
+            setName('');
+            setPassword('');
+            setEmail('');
+            navigate('/dashboard',{replace:true})
+          }
+          
         })
-          .then(res => res.json())
-          .then(data =>
-            localStorage.setItem('token',`Bearer ${data.token}`));
-
-        setName('');
-        setPassword('');
-        setEmail('');
-        navigate('/dashboard',{replace:true})
+        .catch(err=>setError('Network Error!'))
+       
       }
     
     return (
