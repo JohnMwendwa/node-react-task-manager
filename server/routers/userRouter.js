@@ -34,7 +34,7 @@ router.post('/users',async (req,res)=>{
      
      res.status(201).send({user,token})
     }catch(e){
-        res.status(400).send(e.message)
+        res.status(400).send({error:e})
     }
 })
 
@@ -47,7 +47,7 @@ router.post('/users/login',async (req,res)=>{
         const token = await user.generateAuthToken();
         res.send({user,token}) 
     }catch(e){
-        res.status(401).send(e.message)
+        res.status(401).send({error:e})
     }
 })
 
@@ -58,7 +58,7 @@ router.post('/users/logout',auth,async (req,res)=>{
         await req.user.save()
         res.send('Logged out')
     }catch(e){
-        res.status(500).send()
+        res.status(500).send({error:e})
     }
 })
 
@@ -69,7 +69,7 @@ router.post('/users/logoutAll',auth,async (req,res)=>{
     await req.user.save()
     res.send('Successfully logged out of all active sessions')
    }catch(e){
-    res.status(500).send()
+    res.status(500).send({error:e})
    }
 })
 
@@ -89,7 +89,7 @@ router.patch('/users/me',auth,async (req,res)=>{
 
       res.send(req.user)      
     }catch(e){
-        res.status(400).send(e.message)
+        res.status(400).send({error:e})
     }
 })
 
@@ -101,7 +101,7 @@ router.delete('/users/me',auth, async (req,res)=>{
         sendCancellationEmail(req.user.email,req.user.name)
         res.send(req.user)
     }catch(e){
-        res.status(404).send(e.message)
+        res.status(404).send({error:e})
     }
 })
 
@@ -115,7 +115,7 @@ router.post('/users/me/avatar', auth, upload.single('avatar'),async (req,res)=>{
     await req.user.save()
     res.send()
 },(error,req,res,next)=>{
-    res.status(400).send(error.message)
+    res.status(400).send({error:e})
 })
 
 // REMOVE profile pic
@@ -125,7 +125,7 @@ router.delete('/users/me/avatar',auth, async (req,res)=>{
       await req.user.save();
       res.send()
     }catch(e){
-        res.status(500).send(e.message)
+        res.status(500).send({error:e})
     }
 })
 
@@ -141,7 +141,7 @@ router.get('/users/:id/avatar',async (req,res)=>{
         res.set('Content-Type','image/png')
         res.send(user.avatar)
     }catch(e){
-        res.status(404).send()
+        res.status(404).send({error:e})
     }
 })
 
