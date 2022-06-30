@@ -27,7 +27,10 @@ function Login() {
        fetchUser()
           .then(data =>{
             if(data.error){
-              setError(data.error);
+              setError(data.error)
+              setTimeout(()=>{
+                setError(null)
+              },5000)
             }else{
 
               localStorage.setItem('token',`Bearer ${data.token}`);
