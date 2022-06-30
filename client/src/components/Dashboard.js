@@ -8,33 +8,42 @@ function Dashboard() {
     const [email,setEmail] = useState('');
     const token = localStorage.getItem('token');
 
-    useEffect(()=>{
-        const getUser = async ()=>{
-            await fetch('/users/me',{
-               method:'GET',
-               headers:{
-               'Authorization':token
-           }
-           }).then(res=>res.json())
-             .then(data=> {
-                setUsername(data.name);
-                setEmail(data.email)
-            })
-       }
-   
-       const getTasks = async ()=>{
-            await fetch('/tasks',{
-               method:'GET',
-               headers:{
-               'Authorization':token
-           }
-           }).then(res=>res.json())
-             .then(data=>setTasks(data))
-   
-       }
 
-        getUser();
-        getTasks()
+    useEffect(()=>{
+      const getUser = async ()=>{
+        const user =  await fetch('/users/me',{
+             method:'GET',
+             headers:{
+             'Content-Type': 'application/json',
+             'Authorization':token
+         }
+         });
+         return user.json();
+     }
+  
+     const getTasks = async ()=>{
+      const tasks = await fetch('/tasks',{
+            method:'GET',
+            headers:{
+            'Content-Type': 'application/json',
+            'Authorization':token
+        }
+        })
+      
+        return tasks.json();
+    }
+      getUser()
+       .then(data=> {
+          setUsername(data.name);
+          setEmail(data.email)
+      })
+       .catch(err=>console.log(err));
+
+       getTasks()
+       .then(data=>{
+         setTasks(data)
+     })
+       .catch(err=>console.log(err))
     },[token])
 
   return (
