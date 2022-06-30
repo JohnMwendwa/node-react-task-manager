@@ -5,6 +5,7 @@ import './css/Login.css'
 function Login() {
     const [password, setPassword] = useState('');
     const [email,setEmail] =useState('');
+    const [error,setError] =useState(null);
     let navigate = useNavigate();
 
    const fetchUser = async ()=>{
@@ -26,11 +27,11 @@ function Login() {
        fetchUser()
           .then(data =>{
             if(data.error){
-              console.log(data.error);
+              setError(data.error);
             }else{
 
               localStorage.setItem('token',`Bearer ${data.token}`);
-
+              setError(null);
               setPassword('');
               setEmail('');
               navigate('/dashboard',{replace:true})
@@ -44,6 +45,8 @@ function Login() {
       <div>
       <div className="Login__wrap">
         <h2>Login</h2>
+
+        {error && <p className='Login__error'>{error}</p>}
           <form onSubmit={handleSubmit} className='Login__form'>
               <input
                 type="email"
