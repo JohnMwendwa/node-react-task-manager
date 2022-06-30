@@ -71,6 +71,7 @@ function Signup() {
           onChange={e => setName(e.target.value )}
           placeholder='Username'
           className='Signup__username'
+          required
         />
    
         <input
@@ -80,6 +81,7 @@ function Signup() {
           onChange={e => setEmail(e.target.value )}
           placeholder='Email'
           className='Signup__email'
+          required
         />
 
         <input
@@ -89,6 +91,7 @@ function Signup() {
           onChange={e => setPassword( e.target.value )}
           placeholder='Password'
           className='Signup__password'
+          required
         />
   
         <button className='Signup__button'>Create Account</button>
