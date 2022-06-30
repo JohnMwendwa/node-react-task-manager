@@ -44,10 +44,11 @@ router.post('/users/login',async (req,res)=>{
     const password =req.body.password;
     try{
         const user = await User.findByCredentials(email,password);
+
         const token = await user.generateAuthToken();
         res.send({user,token}) 
     }catch(e){
-        res.status(401).send({error:e})
+        res.status(401).send({error:e.message})
     }
 })
 
