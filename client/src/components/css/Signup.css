@@ -3,7 +3,7 @@
     position: relative;
     margin: 20px auto;
     background: #ecf0f1;
-    width: 350px;
+    width: 80%;
     border-radius: 5px;
     box-shadow: 3px 3px 10px #333;
     padding: 15px;
@@ -34,17 +34,19 @@
     margin-bottom: 25px;
     height: 40px;
     border-radius: 5px;
-    outline: none;
-  
+    outline: none; 
 }
+
 .Signup__username,.Signup__email,.Signup__password{
     border: 1px solid #bbb;
     padding: 0 0 0 10px;
     font-size: 14px;
 }
+
 .Signup__username:focus,.Signup__email:focus,.Signup__password:focus{
     border: 1px solid #3498db;
 }
+
 .Signup__button{
     background: #e74c3c;
     border:none;
@@ -54,6 +56,19 @@
     cursor: pointer;
     transition: box-shadow .4s ease;
 }
+
 .Signup__button:hover,.Signup__button:active{
     box-shadow: 1px 1px 5px #555;
+}
+
+@media screen and (min-width:720px){
+    .Signup__wrapper{
+        width:50%;
+    }
+}
+
+@media screen and (min-width:1020px){
+    .Signup__wrapper{
+        width:550px;
+    }
 }
