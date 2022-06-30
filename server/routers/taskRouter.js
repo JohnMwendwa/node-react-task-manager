@@ -18,7 +18,7 @@ router.post('/tasks',auth,async (req,res)=>{
       await task.save();
       res.status(201).send(task)
     }catch(e){
-        res.status(400).send(e.message)
+        res.status(400).send({error:e.message})
     }
 })
 
@@ -46,11 +46,11 @@ router.get('/tasks', auth, async (req,res)=>{
         });
 
         if(tasks.length === 0){
-         return res.send('You have not created any tasks yet')
+         return res.send([])
         }
         res.send(tasks)
     }catch(e){
-        res.status(500).send(e.message)
+        res.status(500).send({error:e.message})
     }
 })
 
