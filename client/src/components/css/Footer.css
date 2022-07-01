@@ -13,6 +13,7 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    align-items: center;
     background: #202020;
     padding: 25px 0;
     padding: 20px 30px;
@@ -24,6 +25,7 @@
 .Footer__copyright-text a{
     color: #ff5e14;
     text-decoration: none;
+    padding-left: 3px;
 }
 .Footer__menu li{
     display: inline-block;
