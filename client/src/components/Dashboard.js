@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Logout from "./Logout";
+import Footer from "./Footer";
 import'./css/Dashboard.css'
 
 function Dashboard() {
@@ -48,18 +49,26 @@ function Dashboard() {
 
   return (
     <div className="Dashboard">
-    <nav className="Dashboard__nav">
-        <div className="Dashboard__username"> {username}</div>
-        <div className="Dashboard__email"> {email}</div>
-        <Logout />
-    </nav>
-    <h1 className="Dashboard__title">Tasks</h1>
-    <ul className="Dashboard__lists">
-    {tasks.map(task=>
-    <li key={task._id} className='Dashboard__list'>
-      {task.description}
-      </li>)}
-      </ul>
+
+      <div className="Dashboard__header">
+          <nav className="Dashboard__nav">
+              <div className="Dashboard__username"> {username}</div>
+              <div className="Dashboard__email"> {email}</div>
+              <Logout />
+            </nav>
+      </div>
+
+    <div className="Dashboard__content">
+        <h1 className="Dashboard__title">Tasks</h1>
+        <ul className="Dashboard__lists">
+        {tasks.map(task=>
+        <li key={task._id} className='Dashboard__list'>
+          {task.description}
+          </li>)}
+          </ul>
+    </div>
+
+    <Footer />
     </div>
   )
 }
