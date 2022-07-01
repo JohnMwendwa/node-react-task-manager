@@ -3,6 +3,7 @@
     flex-direction: column;
     background: #151414;
     color: #fff;
+    margin-top: auto;
 }
 
 .Footer__information{
