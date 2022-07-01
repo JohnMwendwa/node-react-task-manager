@@ -1,11 +1,12 @@
 import React from 'react'
+import './css/Footer.css'
 
 function Footer() {
   return (
    <footer className='Footer'>
     <div className="Footer__container">
         <div className="Footer__information">
-            
+
         </div>
     <div className="Footer__copyright">
         <div className="Footer__copyright-text">
