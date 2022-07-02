@@ -16,11 +16,9 @@
     flex-wrap: wrap;
     align-items: center;
     background: #202020;
-    padding: 25px 0;
     padding: 20px 30px;
 }
 .Footer__copyright-text{
-    margin: 0;
     font-size: 14px;
 }
 .Footer__copyright-text a{
@@ -28,10 +26,17 @@
     text-decoration: none;
     padding-left: 3px;
 }
-.Footer__menu li{
-    display: inline-block;
-    margin-left: 20px;
+.Footer__menu ul{
+    display: flex;
 }
+.Footer__menu li{
+    list-style: none;
+
+}
+.Footer__menu li > *{
+    margin-right: 20px;
+}
+
 .Footer__menu li:hover a{
     color: #ff5e14;
   }
@@ -39,4 +44,14 @@
     font-size: 14px;
     color: #878787;
     text-decoration: none;
+  }
+
+  @media (max-width:440px){
+    .Footer__copyright{
+        flex-direction: column;
+    }
+    .Footer__menu ul{
+       justify-content: center;
+       padding-left: 20px;
+    }
   }
