@@ -7,8 +7,9 @@ function Dashboard() {
     const [tasks,setTasks] = useState([]);
     const [username,setUsername] = useState('');
     const [email,setEmail] = useState('');
+    const [userId,setUserId] = useState();
     const token = localStorage.getItem('token');
-
+    
 
     useEffect(()=>{
       const getUser = async ()=>{
@@ -36,7 +37,8 @@ function Dashboard() {
       getUser()
        .then(data=> {
           setUsername(data.name);
-          setEmail(data.email)
+          setEmail(data.email);
+          setUserId(data._id)
       })
        .catch(err=>console.log(err));
 
@@ -52,9 +54,15 @@ function Dashboard() {
 
       <div className="Dashboard__header">
           <nav className="Dashboard__nav">
-              <div className="Dashboard__username"> {username}</div>
+            <div className="Dashboard__img">
+              <img src={`/users/${userId}/avatar`} alt='' />
+            </div>
+
+            <div className="Dashboard__details">
+            <div className="Dashboard__username"> {username}</div>
               <div className="Dashboard__email"> {email}</div>
               <Logout />
+            </div>   
             </nav>
       </div>
 
