@@ -3,6 +3,7 @@ import Logout from "./Logout";
 import Footer from "./Footer";
 import'./css/Dashboard.css'
 import AddTaskForm from "./AddTaskForm";
+import Task from "./Task";
 
 function Dashboard() {
     const [tasks,setTasks] = useState([]);
@@ -71,9 +72,7 @@ function Dashboard() {
         <h1 className="Dashboard__title">Tasks</h1>
         <ul className="Dashboard__lists">
         {tasks.map(task=>
-        <li key={task._id} className='Dashboard__list'>
-          {task.description}
-          </li>)}
+              <Task key={task._id} task={task}/>)}
           </ul>
           <AddTaskForm />
     </div>
