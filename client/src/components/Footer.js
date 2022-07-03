@@ -10,7 +10,7 @@ function Footer() {
         </div>
     <div className="Footer__copyright">
         <div className="Footer__copyright-text">
-            <p> &copy; 2022 <a href="dev.johnmwendwa@gmail.com">John Mwendwa</a></p>
+            <p> &copy; {new Date().getFullYear()} <a href="dev.johnmwendwa@gmail.com">John Mwendwa</a></p>
         </div>
         <div className="Footer__menu">
             <ul>
