@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Logout from "./Logout";
 import Footer from "./Footer";
 import'./css/Dashboard.css'
+import AddTaskForm from "./AddTaskForm";
 
 function Dashboard() {
     const [tasks,setTasks] = useState([]);
@@ -74,6 +75,7 @@ function Dashboard() {
           {task.description}
           </li>)}
           </ul>
+          <AddTaskForm />
     </div>
 
     <Footer />
