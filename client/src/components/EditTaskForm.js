@@ -1,24 +1,13 @@
 import React from 'react'
 import useFormInput from './hooks/useFormInput';
 
-function EditTaskForm({task,edit}) {
-    const [oldTask,updateTask,resetTask] = useFormInput(task.description);
-const token = localStorage.getItem('token')
+function EditTaskForm({task,edit,updateTask}) {
+    const [newTask,editTask,resetTask] = useFormInput(task.description);
 
     const handleSubmit =(e)=>{
         e.preventDefault();
         try{
-            const updateTask =async()=>{
-                await fetch(`/tasks/${task._id}`,{
-                    method:'PATCH',
-                    body:JSON.stringify({description:oldTask}),
-                    headers:{
-                    'Content-Type':'application/json',
-                    'Authorization':token  
-                 }
-                });
-            }
-            updateTask()
+            updateTask(task._id,newTask)
         }catch(e){
             console.log(e)
         }
@@ -27,7 +16,7 @@ const token = localStorage.getItem('token')
     }
   return (
    <form onSubmit={handleSubmit}>
-    <input type="text"  value={oldTask} onChange={updateTask}/>
+    <input type="text"  value={newTask} onChange={editTask}/>
     <button >Save</button>
    </form>
   )
