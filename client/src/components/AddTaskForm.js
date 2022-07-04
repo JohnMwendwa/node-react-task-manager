@@ -1,26 +1,13 @@
 import React from 'react'
 import useFormInput from './hooks/useFormInput'
 
-function AddTaskForm() {
-const [task,setTask,resetTask] = useFormInput('');
-const token = localStorage.getItem('token');
+function AddTaskForm({createTask}) {
+const [task,handleTask,resetTask] = useFormInput('');
 
 const handleSubmit =(e)=>{
     e.preventDefault();
     try{
-        const postTask =async ()=>{
-            await fetch('/tasks',{
-                method:'POST',
-                body:JSON.stringify({description:task}),
-                headers:{
-                    'Authorization': token,
-                    'Content-Type':'application/json'
-             }
-             }); 
-             
-         }
-         postTask()
-     
+         createTask(task)     
     }catch(e){
         console.log(e)
     }
@@ -29,7 +16,7 @@ const handleSubmit =(e)=>{
 
   return ( 
     <form onSubmit={handleSubmit}>
-       <input type="text" value={task} onChange={setTask}  />
+       <input type="text" value={task} onChange={handleTask}  />
        <button>Add Task</button>
     </form>
   )
