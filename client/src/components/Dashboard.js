@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Logout from "./Logout";
 import Footer from "./Footer";
 import'./css/Dashboard.css'
@@ -11,6 +12,44 @@ function Dashboard() {
     const [email,setEmail] = useState('');
     const [userId,setUserId] = useState();
     const token = localStorage.getItem('token');
+    let navigate = useNavigate()
+
+    const createTask =async (newTask)=>{
+      await fetch('/tasks',{
+          method:'POST',
+          body:JSON.stringify({description:newTask}),
+          headers:{
+              'Authorization': token,
+              'Content-Type':'application/json'
+       }
+       }); 
+       
+   }
+
+  const updateTask =async(id,newTask)=>{
+    await fetch(`/tasks/${id}`,{
+        method:'PATCH',
+        body:JSON.stringify({description:newTask}),
+        headers:{
+        'Content-Type':'application/json',
+        'Authorization':token  
+     }
+    });
+}
+
+
+    const logoutUser = async ()=>{
+      await fetch('/users/logoutAll', {
+          method:'POST',
+          headers:{
+              'Content-Type': 'application/json',
+              'Authorization': token,
+              'mode':'cors'
+          }
+      });
+      localStorage.setItem('token','')
+      navigate('/login')
+  }   
     
 
     useEffect(()=>{
@@ -63,15 +102,15 @@ function Dashboard() {
             <div className="Dashboard__details">
             <div className="Dashboard__username"> {username}</div>
               <div className="Dashboard__email"> {email}</div>
-              <Logout />
+              <Logout  logoutUser={ logoutUser} />
             </div>   
             </nav>
       </div>
 
     <div className="Dashboard__content">
         <h1 className="Dashboard__title">Tasks</h1>
-          <TaskList tasks={tasks} />
-          <AddTaskForm />
+          <TaskList tasks={tasks} updateTask={updateTask}  />
+          <AddTaskForm  createTask={createTask} />
     </div>
 
     <Footer />
