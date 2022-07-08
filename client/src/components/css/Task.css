@@ -1,0 +1,10 @@
+.Task{
+    display: flex;  
+}
+.Task__item{
+    list-style: none;
+    font-size: 1.25rem;
+}
+.Task__btn{
+    margin-left: 5px;
+}
