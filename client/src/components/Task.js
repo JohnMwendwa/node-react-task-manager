@@ -1,6 +1,8 @@
 import React from 'react'
 import EditTaskForm from './EditTaskForm'
 import useToggle from './hooks/useToggle'
+import './css/Task.css'
+
 
 function Task({task,updateTask}) {
     const [isEdit,setIsEdit] = useToggle(false);
