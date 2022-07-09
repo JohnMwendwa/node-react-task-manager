@@ -1,5 +1,6 @@
 import React from 'react'
 import useFormInput from './hooks/useFormInput';
+import './css/EditTaskForm.css'
 
 function EditTaskForm({task,edit,updateTask}) {
     const [newTask,editTask,resetTask] = useFormInput(task.description);
@@ -15,9 +16,15 @@ function EditTaskForm({task,edit,updateTask}) {
         edit(); 
     }
   return (
-   <form onSubmit={handleSubmit}>
-    <input type="text"  value={newTask} onChange={editTask}/>
-    <button >Save</button>
+   <form onSubmit={handleSubmit} className='EditTaskForm'>
+    <input 
+    className='EditTaskForm__input'
+    type="text"  
+    value={newTask} 
+    onChange={editTask}/>
+    <button className='EditTaskForm__btn'>
+        Save
+    </button>
    </form>
   )
 }
