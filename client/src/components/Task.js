@@ -8,10 +8,14 @@ function Task({task,updateTask}) {
     const [isEdit,setIsEdit] = useToggle(false);
   return (
 
-        isEdit ? <EditTaskForm  task={task} edit={setIsEdit} updateTask={updateTask} />:<div className='Task'>
-        <li className='Task__item'>{task.description}</li>
-        <button onClick={setIsEdit} className='Task__btn'>Edit</button>
-        <button className='Task__btn'>Delete</button>
+        isEdit ? <EditTaskForm  task={task} edit={setIsEdit} updateTask={updateTask} />:
+        <div className='Task'>
+          <li className='Task__item'>{task.description}</li>
+
+          <div className="Task__btns">
+            <button onClick={setIsEdit} className='Task__btn'>Edit</button>
+            <button className='Task__btn'>Delete</button>
+          </div>
         </div>
         
   )
