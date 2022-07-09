@@ -10,7 +10,7 @@ function Dashboard() {
     const [tasks,setTasks] = useState([]);
     const [username,setUsername] = useState('');
     const [email,setEmail] = useState('');
-    const [userId,setUserId] = useState();
+    const [userId,setUserId] = useState('');
     const token = localStorage.getItem('token');
     let navigate = useNavigate()
 
@@ -63,7 +63,7 @@ function Dashboard() {
          });
          return user.json();
      }
-  
+
      const getTasks = async ()=>{
       const tasks = await fetch('/tasks',{
             method:'GET',
