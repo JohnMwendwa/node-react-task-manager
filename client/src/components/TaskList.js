@@ -1,5 +1,6 @@
 import React from 'react'
 import Task from './Task'
+import './css/TaskList.css'
 
 function TaskList({tasks,updateTask}) {
   return (
