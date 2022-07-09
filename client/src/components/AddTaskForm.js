@@ -15,9 +15,9 @@ const handleSubmit =(e)=>{
 }
 
   return ( 
-    <form onSubmit={handleSubmit}>
-       <input type="text" value={task} onChange={handleTask}  />
-       <button>Add Task</button>
+    <form onSubmit={handleSubmit} className='AddTaskForm'>
+       <input type="text" value={task} onChange={handleTask}  className='AddTaskForm__input' />
+       <button className='AddTaskForm__btn'>Add Task</button>
     </form>
   )
 }
