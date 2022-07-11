@@ -46,6 +46,15 @@ export const updateTask =async(id,newTask,token)=>{
   });
 }
 
+export const deleteTask = async(id,token)=>{
+    await fetch(`/tasks/${id}`,{
+        method:'DELETE',
+        headers:{
+            'Content-Type':'application/json',
+            'Authorization':token  
+         }
+    })
+}
 
  export const logoutUser = async (token)=>{
     await fetch('/users/logoutAll', {
