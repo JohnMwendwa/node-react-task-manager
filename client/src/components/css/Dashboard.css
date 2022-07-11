@@ -32,7 +32,7 @@
     flex-direction: column;
     padding: 10px;
 }
-.Dashboard__username,.Dashboard__email,.Dashboard button{
+.Dashboard__username,.Dashboard__email{
     margin-top: 3px;
 }
 .Dashboard__title{
