@@ -1,17 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import useFormInput from '../hooks/useFormInput';
 import { updateTask } from '../services/service';
+import {TaskContext} from '../contexts/TaskContext'
 import './css/EditTaskForm.css'
 
 function EditTaskForm({task,edit}) {
+    const {token,setUpdated} = useContext(TaskContext);
     const [newTask,editTask,resetTask] = useFormInput(task.description);
-    const token = localStorage.getItem('token');
 
     const handleSubmit =(e)=>{
         e.preventDefault();
         updateTask(task._id,newTask,token)
-        resetTask();
-        edit(); 
+         .then(()=>{
+           if(newTask !== task.description){
+            setUpdated(true);
+           }
+            resetTask();
+            edit(); 
+         })
     }
   return (
    <form onSubmit={handleSubmit} className='EditTaskForm'>
