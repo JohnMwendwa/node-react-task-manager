@@ -1,19 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import useFormInput from '../hooks/useFormInput';
 import { createTask } from '../services/service';
+import { TaskContext } from '../contexts/TaskContext';
 import './css/AddTaskForm.css';
 
 function AddTaskForm() {
+  const {token,setUpdated} = useContext(TaskContext);
 const [task,setTask,resetTask] = useFormInput('');
-const token = localStorage.getItem('token');
 
 const handleSubmit =(e)=>{
     e.preventDefault();
     
     if(token){
-      createTask(task,token)  
+      createTask(task,token)
+        .then(()=>{
+          setUpdated(true);
+          resetTask()
+        })   
     }   
-    resetTask()
 }
 
   return ( 
