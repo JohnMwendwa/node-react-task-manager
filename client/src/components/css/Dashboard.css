@@ -38,6 +38,7 @@
 .Dashboard__title{
     text-align: center;
     font-size: 48px;
+    margin-bottom: 0;
 }
 .Dashboard__list{
     list-style: none;
