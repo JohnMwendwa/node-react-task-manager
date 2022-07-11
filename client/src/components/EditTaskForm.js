@@ -1,17 +1,15 @@
 import React from 'react'
 import useFormInput from '../hooks/useFormInput';
+import { updateTask } from '../services/service';
 import './css/EditTaskForm.css'
 
-function EditTaskForm({task,edit,updateTask}) {
+function EditTaskForm({task,edit}) {
     const [newTask,editTask,resetTask] = useFormInput(task.description);
+    const token = localStorage.getItem('token');
 
     const handleSubmit =(e)=>{
         e.preventDefault();
-        try{
-            updateTask(task._id,newTask)
-        }catch(e){
-            console.log(e)
-        }
+        updateTask(task._id,newTask,token)
         resetTask();
         edit(); 
     }
