@@ -1,7 +1,7 @@
 .Task{
     display: flex;
-    margin: 3px -3rem 4px;
-    padding: 1.1rem 3rem;
+    margin: 3px -3px 4px;
+    padding: 1.1rem 1.35rem;
     height: 77px;
     justify-content: space-between;
     align-items: center;
