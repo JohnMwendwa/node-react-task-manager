@@ -1,5 +1,5 @@
 import React from 'react'
-import useFormInput from './hooks/useFormInput';
+import useFormInput from '../hooks/useFormInput';
 import './css/EditTaskForm.css'
 
 function EditTaskForm({task,edit,updateTask}) {

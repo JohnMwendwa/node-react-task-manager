@@ -1,6 +1,6 @@
 import React from 'react'
 import EditTaskForm from './EditTaskForm'
-import useToggle from './hooks/useToggle'
+import useToggle from '../hooks/useToggle'
 import './css/Task.css'
 
 

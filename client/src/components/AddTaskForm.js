@@ -1,5 +1,5 @@
 import React from 'react'
-import useFormInput from './hooks/useFormInput';
+import useFormInput from '../hooks/useFormInput';
 import './css/AddTaskForm.css';
 
 function AddTaskForm({createTask}) {
