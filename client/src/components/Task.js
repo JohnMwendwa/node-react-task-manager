@@ -1,16 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import EditTaskForm from './EditTaskForm'
 import useToggle from '../hooks/useToggle';
 import { deleteTask } from '../services/service';
+import {TaskContext} from '../contexts/TaskContext'
 import './css/Task.css'
 
 
 function Task({task}) {
+    const {token,setUpdated} = useContext(TaskContext)
     const [isEdit,setIsEdit] = useToggle(false);
-    const token = localStorage.getItem('token');
 
     const handleDelete =()=>{
-      deleteTask(task._id,token)
+      deleteTask(task._id,token);
+      setUpdated(true); 
     }
 
   return (
