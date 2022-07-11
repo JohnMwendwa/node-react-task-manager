@@ -1,18 +1,22 @@
-import React,{useEffect, useState} from 'react';
+import React,{useContext, useEffect, useState} from 'react';
 import { getTasks } from '../services/service';
 import Task from './Task'
 import './css/TaskList.css'
+import { TaskContext } from '../contexts/TaskContext';
 
 function TaskList() {
+  const {token,mounted,updated,setUpdated} = useContext(TaskContext)
   const [tasks,setTasks] = useState([]);
-  const token = localStorage.getItem('token');
 
   useEffect(()=>{
     getTasks(token)
      .then(data=>{
-      setTasks(data)
+      if(mounted.current || updated){
+        setTasks(data);
+        setUpdated(false)
+      }
      })
-  },[token])
+  },[mounted,token,updated,setUpdated])
   return (
     <div className='TaskList'>
      <ul className="TaskList__lists">
