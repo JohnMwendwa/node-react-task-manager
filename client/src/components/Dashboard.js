@@ -1,30 +1,37 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Logout from "./Logout";
 import Footer from "./Footer";
 import'./css/Dashboard.css'
 import AddTaskForm from "./AddTaskForm";
 import TaskList from "./TaskList";
 import {getUser} from '../services/service';
+import {TaskContext} from '../contexts/TaskContext'
 
 function Dashboard() {
+  const {mounted,token} = useContext(TaskContext);
     const [username,setUsername] = useState('');
     const [email,setEmail] = useState('');
     const [userId,setUserId] = useState('');
-    const token = localStorage.getItem('token');
 
     useEffect(()=>{
+      mounted.current = true;
       if(!token){
         return 
       }
       getUser(token)
        .then(data=> {
+         if(mounted.current){
           setUsername(data.name);
           setEmail(data.email);
           setUserId(data._id);
+         }
       })
-       .catch(err=>console.log(err));
+      return ()=> {
+        mounted.current = false;
+        
+      }
 
-    },[token])
+    },[token,mounted])
 
   return (
     <div className="Dashboard">
