@@ -5,9 +5,9 @@ function Footer() {
   return (
    <footer className='Footer'>
     <div className="Footer__container">
-        <div className="Footer__information">
+        {/* <div className="Footer__information">
 
-        </div>
+        </div> */}
     <div className="Footer__copyright">
         <div className="Footer__copyright-text">
             <p> &copy; {new Date().getFullYear()} <a href="dev.johnmwendwa@gmail.com">John Mwendwa</a></p>
