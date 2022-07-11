@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Logout from "./Logout";
 import Footer from "./Footer";
 import'./css/Dashboard.css'
@@ -12,11 +13,12 @@ function Dashboard() {
     const [username,setUsername] = useState('');
     const [email,setEmail] = useState('');
     const [userId,setUserId] = useState('');
+    let navigate = useNavigate();
 
     useEffect(()=>{
       mounted.current = true;
       if(!token){
-        return 
+        return navigate('/login')
       }
       getUser(token)
        .then(data=> {
@@ -31,7 +33,7 @@ function Dashboard() {
         
       }
 
-    },[token,mounted])
+    },[token,mounted,navigate])
 
   return (
     <div className="Dashboard">
