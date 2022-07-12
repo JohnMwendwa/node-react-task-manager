@@ -1,3 +1,16 @@
+// LOGIN A USER
+ export  const loginUser = async (email,password)=>{
+    const response =  await fetch('/users/login', {
+      method: 'POST',
+      body: JSON.stringify({email,password}),
+      headers: { 
+          'Content-Type': 'application/json',
+          'mode':'cors'
+      }
+    });
+    return response.json();
+   }
+// FETCH USER DETAILS AFTER LOGIN
 export const getUser = async (token)=>{
     const user =  await fetch('/users/me',{
          method:'GET',
@@ -8,7 +21,7 @@ export const getUser = async (token)=>{
      });
      return user.json();
  }
-
+// GET USER TASKS
 export const getTasks = async (token)=>{
   const tasks = await fetch('/tasks',{
         method:'GET',
@@ -22,7 +35,7 @@ export const getTasks = async (token)=>{
 }
 
 
-
+// CREATE NEW TASKS
 export const createTask =async (newTask,token)=>{
     await fetch('/tasks',{
         method:'POST',
@@ -35,6 +48,7 @@ export const createTask =async (newTask,token)=>{
      
  }
 
+//  UPDATE AN EXISTING TASK
 export const updateTask =async(id,newTask,token)=>{
   await fetch(`/tasks/${id}`,{
       method:'PATCH',
@@ -46,6 +60,7 @@ export const updateTask =async(id,newTask,token)=>{
   });
 }
 
+// DELETE A TASK
 export const deleteTask = async(id,token)=>{
     await fetch(`/tasks/${id}`,{
         method:'DELETE',
@@ -56,6 +71,7 @@ export const deleteTask = async(id,token)=>{
     })
 }
 
+// LOGOUT A USER
  export const logoutUser = async (token)=>{
     await fetch('/users/logoutAll', {
         method:'POST',
