@@ -1,9 +1,11 @@
-import React,{useState} from 'react'
+import React,{useContext, useState} from 'react'
 import { useNavigate,Link } from 'react-router-dom';
 import { loginUser } from '../services/service';
+import {TaskContext} from '../contexts/TaskContext'
 import './css/Login.css'
 
 function Login() {
+    const {setToken} = useContext(TaskContext);
     const [password, setPassword] = useState('');
     const [email,setEmail] =useState('');
     const [error,setError] =useState(null);
@@ -21,8 +23,7 @@ function Login() {
                 setError(null)
               },5000)
             }else{
-
-              localStorage.setItem('token',`Bearer ${data.token}`);
+              setToken(data.token);
               setError(null);
               setPassword('');
               setEmail('');
