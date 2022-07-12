@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import { useNavigate,Link } from 'react-router-dom';
+import { loginUser } from '../services/service';
 import './css/Login.css'
 
 function Login() {
@@ -8,23 +9,11 @@ function Login() {
     const [error,setError] =useState(null);
     let navigate = useNavigate();
 
-   const fetchUser = async ()=>{
-    const response =  await fetch('/users/login', {
-      method: 'POST',
-      body: JSON.stringify({email,password}),
-      headers: { 
-          'Content-Type': 'application/json',
-          'mode':'cors'
-      }
-    });
-    return response.json();
-   }
-
 
     const handleSubmit = (e) => {
         e.preventDefault()
 
-       fetchUser()
+       loginUser(email,password)
           .then(data =>{
             if(data.error){
               setError(data.error)
