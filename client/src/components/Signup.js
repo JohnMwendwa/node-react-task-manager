@@ -1,9 +1,11 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import { useNavigate,Link } from 'react-router-dom';
-import {createUser} from '../services/service'
-import './css/Signup.css'
+import {TaskContext} from '../contexts/TaskContext'
+import {createUser} from '../services/service';
+import './css/Signup.css';
 
 function Signup() {
+  const {setToken} = useContext(TaskContext);
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [email,setEmail] =useState('');
@@ -26,7 +28,7 @@ function Signup() {
               setError(null)
             }, 5000);
           }else{
-            localStorage.setItem('token',`Bearer ${data.token}`);
+            setToken(data.token)
             setError(null);
             setName('');
             setPassword('');
