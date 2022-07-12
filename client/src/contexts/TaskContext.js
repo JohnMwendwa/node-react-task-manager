@@ -5,17 +5,19 @@ export const TaskContext = createContext();
 export function TaskContextProvider(props){ 
     const getToken =()=>{
         const tokenString = localStorage.getItem('token');
-        const userToken = JSON.parse(tokenString);
+        const userToken = JSON.parse(tokenString || null);
         return userToken;
     }
 
-    const [token,setToken] = useState(getToken())
+    const [token,setToken] = useState(getToken());
     const [msg,setMsg] = useState('');
     const mounted = useRef(true);
     const [updated,setUpdated] = useState(false)
 
     const saveToken =(userToken)=>{
-        return setToken(localStorage.setItem('token',JSON.stringify(`Bearer ${userToken}`)
+         const b = 'Bearer ';
+         const token = b.concat(userToken)
+        return setToken(localStorage.setItem('token', JSON.stringify(token)
         ));
      }
     return (
