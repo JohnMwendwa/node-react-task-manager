@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import { useNavigate,Link } from 'react-router-dom';
+import {createUser} from '../services/service'
 import './css/Signup.css'
 
 function Signup() {
@@ -9,22 +10,9 @@ function Signup() {
     const [error,setError] =useState(null);
     let navigate = useNavigate();
 
-    const createUser = async ()=>{
-     const response = await fetch('/users', {
-        method: 'POST',
-        body: JSON.stringify({email,password,name}),
-        headers: { 
-            'Content-Type': 'application/json',
-            'mode':'cors'
-        }
-      });
-      return await response.json();
-      
-    }
-
     const handleSubmit = async (e) => {
         e.preventDefault()
-       createUser()
+       createUser(email,password,name)
         .then(data=>{
         
           if(data.error.message){
