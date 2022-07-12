@@ -1,3 +1,18 @@
+// SIGNUP A NEW USER
+export const createUser = async (email,password,name)=>{
+    const response = await fetch('/users', {
+       method: 'POST',
+       body: JSON.stringify({email,password,name}),
+       headers: { 
+           'Content-Type': 'application/json',
+           'mode':'cors'
+       }
+     });
+     return await response.json();
+     
+   }
+
+
 // LOGIN A USER
  export  const loginUser = async (email,password)=>{
     const response =  await fetch('/users/login', {
