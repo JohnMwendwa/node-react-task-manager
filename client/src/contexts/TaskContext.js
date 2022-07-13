@@ -15,8 +15,13 @@ export function TaskContextProvider(props){
     const [updated,setUpdated] = useState(false)
 
     const saveToken =(userToken)=>{
-         const b = 'Bearer ';
-         const token = b.concat(userToken)
+        let token;
+        if(!userToken.length){
+            token = ''
+        }else{
+            const b = 'Bearer ';
+            token = b.concat(userToken)
+        }
         return setToken(localStorage.setItem('token', JSON.stringify(token)
         ));
      }
