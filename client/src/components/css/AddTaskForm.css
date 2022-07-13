@@ -9,7 +9,7 @@
     background-color:#f7f1f1;
     border:none;
     font-size:medium;
-    padding:0 1.5em;
+    padding:0 1em;
     outline: none;
 }
 .AddTaskForm__btn{
@@ -21,7 +21,7 @@
     cursor:pointer;
     font-weight:700;
     margin-left:5px;
-    padding:0 1.5rem;
+    padding:0 1em;
     text-transform:uppercase;
     transition:background 0.2s ease-out;
 }
@@ -32,5 +32,5 @@
 .AddTaskForm__btn,
 .AddTaskForm__input{
     font-family:Quicksand,sans-serif;
-    height:3rem
+    padding: 1rem 1em;
 }

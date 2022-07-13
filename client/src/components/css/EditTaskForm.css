@@ -1,8 +1,7 @@
 .EditTaskForm{
     display:flex;
     margin: 0 -3rem 4px;
-    padding: 1.1rem 3rem;
-    height: 77px;
+    padding: 1rem 3rem;
     justify-content: space-between;
     align-items: center;
     background: rgba(255, 255, 255, 0.2);
@@ -17,7 +16,7 @@
       border:none;
       font-size:medium;
       outline:none;
-      padding:0 1.5em;
+      padding:0 1em;
       }
   .EditTaskForm__btn{
       background-color:#8e0e00;
@@ -27,7 +26,7 @@
       cursor:pointer;
       font-weight:700;
       margin-left:5px;
-      padding:0 1.3rem;
+      padding:0 1em;
       text-transform:uppercase;
       transition:background 0.2s ease-out;
       }
@@ -38,5 +37,5 @@
   .EditTaskForm__btn,
   .EditTaskForm__input{
           font-family:Quicksand,sans-serif;
-          height:3rem;
+          padding: 1rem 1em;
       }

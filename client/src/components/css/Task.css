@@ -1,8 +1,7 @@
 .Task{
     display: flex;
     margin: 3px -3px 4px;
-    padding: 1.1rem 1.35rem;
-    height: 77px;
+    padding: 1rem 3rem;
     justify-content: space-between;
     align-items: center;
     background: rgba(255, 255, 255, 0.2);
@@ -21,8 +20,7 @@
 }
 .Task__btn{
     font-family:Quicksand,sans-serif;
-    padding:0 1.3rem;
-    height:3rem;
+    padding:0.7rem 1.3rem;
     border: none;
     font-size: 1em;
     margin: 0.4em;
