@@ -5,10 +5,10 @@ export const createUser = async (email,password,name)=>{
        body: JSON.stringify({email,password,name}),
        headers: { 
            'Content-Type': 'application/json',
-           'mode':'cors'
        }
      });
-     return await response.json();
+
+     return  response.json();
      
    }
 
@@ -20,7 +20,6 @@ export const createUser = async (email,password,name)=>{
       body: JSON.stringify({email,password}),
       headers: { 
           'Content-Type': 'application/json',
-          'mode':'cors'
       }
     });
     return response.json();
