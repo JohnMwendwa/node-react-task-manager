@@ -1,17 +1,17 @@
+import { useContext } from 'react';
+import {TaskContext} from '../contexts/TaskContext';
 import {logoutUser} from '../services/service';
 import {useNavigate} from 'react-router-dom';
 
 function Logout() {
-  let token = localStorage.getItem('token');
+  const {token,setToken} = useContext(TaskContext);
   let navigate = useNavigate();
 
 const handleLogout =()=>{
     if(token){
-      logoutUser(token)
-      .then(()=>{
-        token = localStorage.setItem('token','');
-        navigate('/login')
-      })
+      logoutUser(token);
+      setToken('');
+      navigate('/login');
     }
 }
   
