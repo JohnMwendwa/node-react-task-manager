@@ -16,13 +16,13 @@ function Signup() {
         e.preventDefault()
        createUser(email,password,name)
         .then(data=>{
-        
-          if(data.error.message){
+  
+          if(data.error?.message){
             setError(data.error.message)
             setTimeout(() => {
               setError(null)
             }, 5000);
-          }else if(data.error.index === 0){
+          }else if(data.error?.index === 0){
             setError('Email already exists!')
             setTimeout(() => {
               setError(null)
@@ -34,16 +34,16 @@ function Signup() {
             setPassword('');
             setEmail('');
             navigate('/dashboard',{replace:true})
-          }
-          
+          }       
         })
         .catch(err=>{
-          setError('Network Error!');
-          setTimeout(() => {
-            setError(null)
-          }, 5000);
-        })
-       
+          if(err){
+            setError('Network Error!')
+            setTimeout(() => {
+              setError(null)
+            }, 5000);
+          }
+        })    
       }
     
     return (
