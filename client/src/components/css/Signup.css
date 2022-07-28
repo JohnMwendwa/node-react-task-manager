@@ -33,7 +33,6 @@
     margin-bottom: 25px;
     height: 40px;
     border-radius: 5px;
-    width: 83%;
     outline: none; 
 }
 
@@ -54,6 +53,7 @@
     font-size: 18px;
     font-weight: 200;
     cursor: pointer;
+    width: 83%;
     transition: box-shadow .4s ease;
 }
 
