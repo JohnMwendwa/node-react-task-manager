@@ -1,9 +1,8 @@
 
 .Signup__wrapper{
-    position: relative;
-    margin: 20px auto;
     background: #ecf0f1;
-    width: 80%;
+    max-width: 550px;
+    min-width: 330px;
     border-radius: 5px;
     box-shadow: 3px 3px 10px #333;
     padding: 15px;
@@ -34,6 +33,7 @@
     margin-bottom: 25px;
     height: 40px;
     border-radius: 5px;
+    width: 83%;
     outline: none; 
 }
 
@@ -73,14 +73,3 @@
 }
 
 
-@media screen and (min-width:720px){
-    .Signup__wrapper{
-        width:50%;
-    }
-}
-
-@media screen and (min-width:1020px){
-    .Signup__wrapper{
-        width:550px;
-    }
-}
